@@ -89,6 +89,11 @@ function modifySkype() {
     console.log(`Packing ${asarName}`);
 
     runAsar(`pack ${srcDirName} ${asarName} --unpack "{*.node,*.dll}"`);
+
+    console.log(`Copying ${tmpAsarPath} back to ${resourcesPath}`);
+
+    fs.chmodSync(asarPath, 666);
+    fs.copyFileSync(tmpAsarPath, asarPath);
 }
 
 modifySkype();
