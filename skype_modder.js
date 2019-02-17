@@ -21,8 +21,8 @@ function killSkypeProcess() {
         switch (os.platform()) {
             case 'win32':
                 return `taskkill /f /im ${name}`;
-            default:
-                return ``;
+            default: // Linux, MacOS
+                return `ps aux | grep -ie ${name} | awk '{print $2}' | xargs kill -9`;
         }
     }
 
