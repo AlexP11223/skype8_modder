@@ -46,7 +46,7 @@ function getSkypeAsarPath() {
     }
 }
 
-function modifySkype() {
+function modifySkype(replacements) {
     killSkypeProcess();
 
     const resourcesPath = getSkypeAsarPath();
@@ -86,6 +86,12 @@ function modifySkype() {
 
     runAsar(`extract ${asarName} ${srcDirName}`);
 
+    replacements.forEach(it => {
+        console.log(`Replacing ${it.dest} with ${it.src}`);
+
+        fs.copyFileSync(it.src, path.join(tmpDirPath, srcDirName, it.dest))
+    });
+
     console.log(`Packing ${asarName}`);
 
     runAsar(`pack ${srcDirName} ${asarName} --unpack "{*.node,*.dll}"`);
@@ -96,4 +102,9 @@ function modifySkype() {
     fs.copyFileSync(tmpAsarPath, asarPath);
 }
 
-modifySkype();
+const replacements = [
+    {task: 'replace', src: 'data/muted_Skype_Call_Ringing.m4a', dest: 'media/Skype_Call_Ringing.m4a'},
+    {task: 'replace', src: 'data/muted_Skype_Call_Ringing_Long.m4a', dest: 'media/Skype_Call_Ringing_Long.m4a'},
+];
+
+modifySkype(replacements);
