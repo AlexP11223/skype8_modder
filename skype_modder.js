@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const process = require('process');
 const child_proc = require('child_process');
+const utils = require('./utils');
 
 function killSkypeProcess() {
     function getName() {
@@ -45,33 +46,6 @@ function getSkypeAsarPath() {
     }
 }
 
-function getCurrentDateTimeString() {
-    const date = new Date();
-    return date.getFullYear() + '-' +
-        (date.getMonth() + 1).toString().padStart(2, '0') + '-' +
-        date.getDate().toString().padStart(2, '0') + '_' +
-        date.getHours().toString().padStart(2, '0') + '-' +
-        date.getMinutes().toString().padStart(2, '0') + '-' +
-        date.getSeconds().toString().padStart(2, '0');
-}
-
-function copyDirRecursiveSync(source, target) {
-    const targetDir = path.join( target, path.basename( source ) );
-    if (!fs.existsSync(targetDir)) {
-        fs.mkdirSync(targetDir);
-    }
-
-    const files = fs.readdirSync(source);
-    files.forEach( file => {
-        const curSource = path.join(source, file);
-        if (fs.lstatSync(curSource).isDirectory()) {
-            copyDirRecursiveSync(curSource, targetDir);
-        } else {
-            fs.copyFileSync(curSource, path.join(targetDir, file));
-        }
-    });
-}
-
 function modifySkype() {
     killSkypeProcess();
 
@@ -88,7 +62,7 @@ function modifySkype() {
         process.exit(1);
     }
 
-    const tmpDirPath = `skype8_asar/${getCurrentDateTimeString()}`;
+    const tmpDirPath = `skype8_asar/${utils.getCurrentDateTimeString()}`;
     const tmpAsarPath = path.join(tmpDirPath, asarName);
 
     if (!fs.existsSync(tmpDirPath)) {
@@ -98,7 +72,7 @@ function modifySkype() {
     console.log(`Copying files to ${tmpDirPath}`);
 
     fs.copyFileSync(asarPath, tmpAsarPath);
-    copyDirRecursiveSync(asarPath + '.unpacked', tmpDirPath);
+    utils.copyDirRecursiveSync(asarPath + '.unpacked', tmpDirPath);
     fs.copyFileSync(tmpAsarPath, tmpAsarPath + '.bak');
 
     const srcDirName = 'app';
