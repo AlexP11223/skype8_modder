@@ -72,7 +72,7 @@ function modifySkype(replacements) {
     console.log(`Copying files to ${tmpDirPath}`);
 
     fs.copyFileSync(asarPath, tmpAsarPath);
-    fs.chmodSync(tmpAsarPath, 666);
+    fs.chmodSync(tmpAsarPath, 0o666);
     utils.copyDirRecursiveSync(asarPath + '.unpacked', tmpDirPath);
     fs.copyFileSync(tmpAsarPath, tmpAsarPath + '.bak');
 
@@ -98,7 +98,7 @@ function modifySkype(replacements) {
 
     console.log(`Copying ${tmpAsarPath} back to ${resourcesPath}`);
 
-    fs.chmodSync(asarPath, 666);
+    fs.chmodSync(asarPath, 0o666);
     fs.copyFileSync(tmpAsarPath, asarPath);
 }
 
