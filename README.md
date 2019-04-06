@@ -1,4 +1,4 @@
-Script for Skype 8 files modification.
+Script for Skype 8 source files extraction/modification.
 
 Skype 8 is written using Electron, so it is possible to extract most of its source files from **asar.pak** (**C:\Program Files (x86)\Microsoft\Skype for Desktop\resources\asar.pak** on Windows) [using `asar` Node.js tool](https://medium.com/how-to-electron/how-to-get-source-code-of-any-electron-application-cbb5c7726c37). 
 
