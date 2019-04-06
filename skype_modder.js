@@ -43,7 +43,7 @@ function killSkypeProcess() {
 function getSkypeAsarPaths() {
     switch (os.platform()) {
         case 'win32':
-            return ['C:\\Program Files (x86)\\Microsoft\\Skype for Desktop\\resources'];
+            return ['C:\\Program Files (x86)\\Microsoft\\Skype for Desktop\\resources', 'C:\\Program Files\\Microsoft\\Skype for Desktop\\resources'];
         case 'darwin': // MacOS
             return ['/Applications/Skype.app/Contents/Resources'];
         default: // Linux
