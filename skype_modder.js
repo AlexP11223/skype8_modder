@@ -5,6 +5,11 @@ const process = require('process');
 const child_proc = require('child_process');
 const utils = require('./utils');
 
+if (process.version.match(/^v(\d+)/)[1].length < 2) {
+    console.log('Too old Node.js, Node.js 10+ required');
+    return 1;
+}
+
 function killSkypeProcess() {
     function getName() {
         switch (os.platform()) {
