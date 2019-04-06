@@ -13,7 +13,11 @@ You need to repeat it after any Skype 8 update.
 # Usage
 
 0. Download the files (use the Download button in the top right corner on GitHub, or `git clone`).
-1. Install [Node.js](https://nodejs.org/en/download/). On Windows you may need to restart your PC so the PATH variable gets reloaded (or just launch cmd or PowerShell from the Start menu and run everything from there).
+1. Install [Node.js **10+**](https://nodejs.org/en/download/). 
+
+   On Windows you may need to restart your PC so the PATH variable gets reloaded (or just launch cmd or PowerShell from the Start menu and run everything from there).
+   
+   On Ubuntu 18.04 LTS you need to [find out how to install Node.js 10+](https://www.google.com/search?q=ubuntu+nodejs+10), by default it installs 8.x.
 2. Install `asar` by running `npm install -g asar` in cmd/terminal. You can skip this step if running via the .bat or .sh script.
 3. Run `node skype_modder.js` in cmd/terminal OR run **skype_modder.bat** (for Windows) OR run **skype_modder.sh** (for Linux/MacOS).
 
