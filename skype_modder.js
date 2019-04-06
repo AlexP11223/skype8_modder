@@ -35,32 +35,38 @@ function killSkypeProcess() {
     }
 }
 
-function getSkypeAsarPath() {
+function getSkypeAsarPaths() {
     switch (os.platform()) {
         case 'win32':
-            return 'C:\\Program Files (x86)\\Microsoft\\Skype for Desktop\\resources';
+            return ['C:\\Program Files (x86)\\Microsoft\\Skype for Desktop\\resources'];
         case 'darwin': // MacOS
-            return '/Applications/Skype.app/Contents/Resources';
+            return ['/Applications/Skype.app/Contents/Resources'];
         default: // Linux
-            return '/usr/share/skypeforlinux/resources';
+            return ['/usr/share/skypeforlinux/resources', '/snap/skype/current/usr/share/skypeforlinux/resources'];
     }
+}
+
+function findSkypeAsarPath() {
+    const paths = getSkypeAsarPaths();
+    const result = paths.filter(path => fs.existsSync(path));
+    return result.length ? result[0] : null;
 }
 
 function modifySkype(replacements) {
     killSkypeProcess();
 
-    const resourcesPath = getSkypeAsarPath();
-    const asarName = 'app.asar';
-    const asarPath = path.join(resourcesPath, asarName);
-
-    console.log(asarPath);
-
-    if (!fs.existsSync(asarPath)) {
-        console.error(`${asarPath} not found
+    const resourcesPath = findSkypeAsarPath();
+    if (!resourcesPath) {
+        console.error(`${getSkypeAsarPaths()} not found
             maybe you are not using Skype 8 (Skype for Desktop, not Windows 10 Store app)
             or it is installed in different place`);
         process.exit(1);
     }
+
+    const asarName = 'app.asar';
+    const asarPath = path.join(resourcesPath, asarName);
+
+    console.log(asarPath);
 
     const tmpDirPath = `skype8_asar/${utils.getCurrentDateTimeString()}`;
     const tmpAsarPath = path.join(tmpDirPath, asarName);
