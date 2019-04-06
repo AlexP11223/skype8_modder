@@ -47,7 +47,9 @@ function getSkypeAsarPaths() {
         case 'darwin': // MacOS
             return ['/Applications/Skype.app/Contents/Resources'];
         default: // Linux
-            return ['/usr/share/skypeforlinux/resources', '/snap/skype/current/usr/share/skypeforlinux/resources'];
+             return ['/usr/share/skypeforlinux/resources'];
+            // snap Skype version is installed to '/snap/skype/current/usr/share/skypeforlinux/resources'
+            // but looks like it's not possible to easily modify files here
     }
 }
 

@@ -6,7 +6,7 @@ This script kills all running Skype 8 processes, copies **asar.pak** from the Sk
 
 This can be useful for example to replace or disable the ringtone sound since there is still no way to do this in Skype 8 settings, and this is all this script currently does by default - mutes Skype 8 ringtone sound, because I was very annoyed by it playing loudly every time I call someone and I don't see any reason to have it. Sadly it also uses the same sound for the incoming calls, so they get muted too (probably possible to fix by modifying some .js code in the extracted source files, but it's not a problem for me because on desktop I use only headphones anyway).
 
-It should work on Windows (probably need to replace the Program Files path in 32 bit versions, if anyone still uses them), Linux, MacOS (not tested, possibly wrong path).
+It should work on Windows (probably need to replace the Program Files path in 32 bit versions, if anyone still uses them), Linux (not snap), MacOS (not tested, possibly wrong path).
 
 You need to repeat it after any Skype 8 update. 
 
