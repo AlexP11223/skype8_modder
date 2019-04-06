@@ -6,13 +6,13 @@ This script kills all running Skype 8 processes, copies **asar.pak** from the Sk
 
 This can be useful for example to replace or disable the ringtone sound since there is still no way to do this in Skype 8 settings, and this is all this script currently does by default - mutes Skype 8 ringtone sound, because I was very annoyed by it playing loudly every time I call someone and I don't see any reason to have it. Sadly it also uses the same sound for the incoming calls, so they get muted too (probably possible to fix by modifying some .js code in the extracted source files, but it's not a problem for me because on desktop I use only headphones anyway).
 
-It should work on
+Should work on
 
 - Windows
 - Linux, for Skype installed from `deb` (not `snap`)
 - MacOS (not tested, possibly wrong path)
 
-You need to repeat it after any Skype 8 update. 
+You need to rerun it after any Skype 8 update. 
 
 # Usage
 
@@ -23,7 +23,8 @@ You need to repeat it after any Skype 8 update.
    
    On Ubuntu 18.04 LTS you need to [find out how to install Node.js 10+](https://www.google.com/search?q=ubuntu+nodejs+10), by default it installs 8.x.
 2. Install `asar` by running `npm install -g asar` in cmd/terminal. You can skip this step if running via the .bat or .sh script.
-3. Run `node skype_modder.js` in cmd/terminal OR run **skype_modder.bat** (for Windows) OR run **skype_modder.sh** (for Linux/MacOS).
+3. Specify files to be replaced at the bottom of [skype8_modder.js](https://github.com/AlexP11223/skype8_modder/blob/master/skype_modder.js). The default replacement is described above.
+4. Run `node skype_modder.js` in cmd/terminal OR run **skype_modder.bat** (for Windows) OR run **skype_modder.sh** (for Linux/MacOS).
 
    You may need to run it as admin/root (via the right click menu on Windows or `sudo` on Linux/MacOS), otherwise it may fail to replace the original `asar.pak` (you can do it manually if you want). 
 
