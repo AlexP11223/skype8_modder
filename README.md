@@ -9,8 +9,8 @@ This can be useful for example to replace or disable the ringtone sound since th
 It should work on
 
 - Windows
-- Linux (not snap)
-- MacOS (not tested, possibly wrong path).
+- Linux, for Skype installed from `deb` (not `snap`)
+- MacOS (not tested, possibly wrong path)
 
 You need to repeat it after any Skype 8 update. 
 
