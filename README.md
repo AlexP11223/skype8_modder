@@ -8,7 +8,7 @@ This can be useful for example to replace or disable the ringtone sound since th
 
 Should work on
 
-- Windows
+- Windows (Skype 8 desktop app, not UWP app from Store)
 - Linux, for Skype installed from `deb` (not `snap`)
 - MacOS (not tested, possibly wrong path)
 
